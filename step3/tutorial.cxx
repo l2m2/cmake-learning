@@ -1,13 +1,13 @@
 #include <iostream>
-#include "step3.h"
-#ifdef USE_MYSQRT
+#include "TutorialConfig.h"
+#ifdef USE_MYMATH 
 #include "mysqrt.h"
 #else
 #include <cmath>
 #endif
 
 int main(int argc, char* argv[]) {
-#ifdef USE_MYSQRT
+#ifdef USE_MYMATH
   std::cout << "use mysqrt" << std::endl;
   std::cout << mysqrt(2) << std::endl;
 #else
