@@ -1,20 +1,20 @@
 cmake_minimum_required(VERSION 3.10)
 
-# should we use our own math functions
-option(USE_MYSQRT "Use tutorial provided math implementation" ON)
+project(Tutorial VERSION 1.0)
 
-# configure a header file to pass some of the CMake settings to the source code
-configure_file(step2.h.in step2.h)
+option(USE_MYMATH  "Use tutorial provided math implementation" ON)
+
+configure_file(TutorialConfig.h.in TutorialConfig.h)
 
 # add the MathFunctions library
-if(USE_MYSQRT)
-  add_subdirectory(mysqrtlib)
-  list(APPEND EXTRA_LIBS mysqrtlib)
-  list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/mysqrtlib")
+if(USE_MYMATH)
+  add_subdirectory(MathFunctions)
+  list(APPEND EXTRA_LIBS MathFunctions)
+  list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/MathFunctions")
 endif()
 
-add_executable(step2 step2.cxx)
+add_executable(Tutorial tutorial.cxx)
 
-target_link_libraries(step2 PUBLIC ${EXTRA_LIBS})
+target_link_libraries(Tutorial PUBLIC ${EXTRA_LIBS})
 
-target_include_directories(step2 PUBLIC "${PROJECT_BINARY_DIR}" ${EXTRA_INCLUDES})
+target_include_directories(Tutorial PUBLIC "${PROJECT_BINARY_DIR}" ${EXTRA_INCLUDES})
