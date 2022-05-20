@@ -1,3 +1,0 @@
-#define Step7_VERSION_MAJOR @Step7_VERSION_MAJOR@
-#define Step7_VERSION_MINOR @Step7_VERSION_MINOR@
-#cmakedefine USE_MYSQRT
